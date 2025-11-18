@@ -258,12 +258,12 @@ class AuthService:
         email_obj = self.email_service.get_email_by_email_address(email)
         if not email_obj:
             raise APIException("Email is not registered.")
-        
+
         person = self.person_service.get_person_by_id(email_obj.person_id)
         if not person:
             raise APIException("Person does not exist.")
 
-        login_method = self.login_method_service.get_login_method_by_email_id(email.entity_id)
+        login_method = self.login_method_service.get_login_method_by_email_id(email_obj.entity_id)
         if not login_method:
             raise APIException("Login method does not exist.")
 
